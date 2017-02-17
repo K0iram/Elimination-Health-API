@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class MealsController < ApplicationController
+class MealsController < OpenReadController
   before_action :set_meal, only: [:show, :update, :destroy]
 
   # GET /meals
@@ -11,12 +11,12 @@ class MealsController < ApplicationController
 
   # GET /meals/1
   def show
-    render json: @meal
+    render json: Meal.find(params[:id])
   end
 
   # POST /meals
   def create
-    @meal = Meal.new(meal_params)
+    @meal = current_user.meals.build(meal_params)
 
     if @meal.save
       render json: @meal, status: :created
@@ -28,7 +28,7 @@ class MealsController < ApplicationController
   # PATCH/PUT /meals/1
   def update
     if @meal.update(meal_params)
-      render json: @meal
+      head :no_content
     else
       render json: @meal.errors, status: :unprocessable_entity
     end
@@ -37,13 +37,15 @@ class MealsController < ApplicationController
   # DELETE /meals/1
   def destroy
     @meal.destroy
+
+    head :no_content
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_meal
-    @meal = Meal.find(params[:id])
+    @meal = current_user.meals.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.

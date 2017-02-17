@@ -1,12 +1,12 @@
 #!/bin/bash
 
 API="${API_ORIGIN:-http://localhost:4741}"
-URL_PATH="/meals"
+URL_PATH="/meals/${ID}"
 curl "${API}${URL_PATH}" \
   --include \
-  --request POST \
-  --header "Authorization: Token token=$TOKEN" \
+  --request PATCH \
   --header "Content-Type: application/json" \
+  --header "Authorization: Token token=$TOKEN" \
   --data '{
     "meal": {
       "eaten_on": "'"${DATE}"'",
@@ -15,6 +15,5 @@ curl "${API}${URL_PATH}" \
       "feeling": "'"${FEELING}"'"
     }
   }'
-
 
 echo
