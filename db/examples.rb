@@ -17,3 +17,11 @@
 #                password: 'abc123',
 #                password_confirmation: nil)
 # end
+%w(smoothie salad sandwich wrap snack).each do |title|
+  meal_name = "#{title}"
+  next if Meal.exists? title: meal_name
+  Meal.create!(title: meal_name,
+               eaten_on: '1988-10-07',
+               description: 'some things here',
+               feeling: '9')
+end
