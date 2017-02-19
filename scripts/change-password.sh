@@ -7,7 +7,6 @@ curl "${API}${URL_PATH}/${ID}" \
   --request PATCH \
   --header "Authorization: Token token=${TOKEN}" \
   --header "Content-Type: application/json" \
-  --header "Access-Control-Allow-Origin" \
   --data '{
     "passwords": {
       "old": "'"${OLDPW}"'",

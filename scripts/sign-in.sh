@@ -6,7 +6,6 @@ curl "${API}${URL_PATH}" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \
-  --header "Access-Control-Allow-Origin" \
   --data '{
     "credentials": {
       "email": "'"${EMAIL}"'",
