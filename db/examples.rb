@@ -17,7 +17,7 @@
 #                password: 'abc123',
 #                password_confirmation: nil)
 # end
-%w(salad sandwich wrap snack).each do |title|
+%w(meal1 meal2 meal3 meal4).each do |title|
   meal_name = "#{title}"
   next if Meal.exists? title: meal_name
   Meal.create!(title: meal_name,
