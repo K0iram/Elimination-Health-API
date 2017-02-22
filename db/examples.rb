@@ -13,10 +13,11 @@
 # %w(antony jeff matt jason).each do |name|
 #   email = "#{name}@#{name}.com"
 #   next if User.exists? email: email
-#   User.create!(email: email,
-#                password: 'abc123',
-#                password_confirmation: nil)
-# end
+
+User.create!(email: email,
+             password: 'abc123',
+             password_confirmation: nil)
+
 %w(meal1 meal2 meal3 meal4).each do |title|
   meal_name = "#{title}"
   next if Meal.exists? title: meal_name
