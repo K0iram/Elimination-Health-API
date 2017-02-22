@@ -6,5 +6,4 @@ class Meal < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :feeling, presence: true
-  validates :text, :user, presence: true
 end
